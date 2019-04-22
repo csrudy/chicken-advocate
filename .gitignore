@@ -1,0 +1,4 @@
+/client/src/static/dist
+node_modules
+.gitignore
+package-lock.json
