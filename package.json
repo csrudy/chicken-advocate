@@ -1,0 +1,42 @@
+{
+  "name": "chicken-eggregator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.12.0",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.3",
+    "@types/react-redux": "^7.0.5",
+    "@types/webpack": "^4.4.26",
+    "@types/webpack-env": "^1.13.9",
+    "css-loader": "^0.28.11",
+    "jest": "^24.5.0",
+    "jest-enzyme": "^7.0.2",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.2",
+    "redux-devtools-extension": "^2.13.8",
+    "sass-loader": "^7.1.0",
+    "ts-jest": "^24.0.0",
+    "ts-loader": "^5.3.3",
+    "typesafe-actions": "^4.0.0",
+    "typescript": "^3.3.4000",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "source-map-loader": "^0.2.4"
+  }
+}
