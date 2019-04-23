@@ -2,16 +2,15 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./client/src/index.tsx",
+  entry: "./client/src/store/index.tsx",
   devServer: {
-    contentBase: path.resolve(__dirname, "server/static"),
+    contentBase: path.resolve(__dirname, "./client/src/static/"),
     publicPath: "/build/",
-    proxy: {},
     hot: true
   },
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "./client/src/static/dist/")
+    path: path.resolve(__dirname, "./client/src/static/")
   },
 
   // Enable sourcemaps for debugging webpack's output.
