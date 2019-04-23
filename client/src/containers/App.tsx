@@ -23,7 +23,7 @@ const App: React.SFC<AppProps> = (props) => {
   return (
     <React.Fragment>
       <Header />
-      <h1>Hello, {props.name}</h1>;
+      <h1>Hello, {props.name}</h1>
     </React.Fragment>
   )
 }
