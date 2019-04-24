@@ -16,12 +16,15 @@ import Header from '../components/Header'
 interface AppProps {
   name?: string,
   updateSearchBar: any,
-  searchBarString: any
+  searchBarString: any,
+  radio: any,
+  chooseRadio: any
 }
 
 const mapStateToProps = (store: Types.ReducerState) => {
   return {
-    searchBarString: store.main.searchBarString
+    searchBarString: store.main.searchBarString,
+    radio: store.main.radio
   }
 }
 
@@ -34,9 +37,9 @@ const App: React.FunctionComponent<AppProps> = (props) => {
     <React.Fragment>
       <Header />
       <CardBox />
-      <SearchBar handleChange={props.updateSearchBar} />
+      <SearchBar handleChange={props.updateSearchBar} handleRadio={props.chooseRadio} />
       <Filter />
-      <h1>Hello {props.searchBarString}</h1>
+      <h1>Hello</h1>
     </React.Fragment>
   )
 }

@@ -1,4 +1,5 @@
 
 export interface MainModel {
-  searchBarString: string
+  searchBarString: string,
+  radio: string
 }

@@ -5,7 +5,8 @@ import { MainModel } from "./model";
 
 
 const initialState: MainModel = {
-  searchBarString: 'cell'
+  searchBarString: 'cell',
+  radio: 'zip'
 };
 
 export const mainReducer = (state: MainModel = initialState, action: Types.RootAction) => {
@@ -17,8 +18,15 @@ export const mainReducer = (state: MainModel = initialState, action: Types.RootA
     }
     case actionTypes.UPDATE_SEARCH:{
       return {
-        searchBarString: action.payload,
-        ...state
+        ...state,
+        searchBarString: action.payload
+      }
+    }
+
+    case actionTypes.CHOOSE_RADIO:{
+      return {
+        ...state,
+        radio: action.payload
       }
     }
 
