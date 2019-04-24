@@ -19,8 +19,11 @@ const store = createStore(reducers, middleware);
 
 ReactDOM.render(
   <Provider store={store}>
+  {/*
+  //@ts-ignore */}
     <App />
   </Provider>,
-document.getElementById("root"));
+document.getElementById("root")
+);
 
 export default store;

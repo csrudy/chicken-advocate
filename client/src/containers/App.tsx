@@ -2,34 +2,45 @@ import * as React from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { actions } from '../actions/actions';
+import { MainModel } from '../reducers/model'
 import * as Types from "MyTypes";
+import CardBox from './CardBox';
+import SearchBar from '../components/SearchBar';
+import Filter from '../components/Filter';
+
+
 
 // import model, styles, and children
 import Header from '../components/Header'
 
 interface AppProps {
-  name?: string, // makes name optional
+  name?: string,
+  updateSearchBar: any,
+  searchBarString: any
 }
 
 const mapStateToProps = (store: Types.ReducerState) => {
   return {
-
+    searchBarString: store.main.searchBarString
   }
 }
+
+
 //@ts-ignore
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) => bindActionCreators(actions, dispatch);
 
-const App: React.SFC<AppProps> = (props) => {
+const App: React.FunctionComponent<AppProps> = (props) => {
   return (
     <React.Fragment>
       <Header />
-      <h1>Hello, {props.name}</h1>
+      <CardBox />
+      <SearchBar handleChange={props.updateSearchBar} />
+      <Filter />
+      <h1>Hello {props.searchBarString}</h1>
     </React.Fragment>
   )
 }
 
-App.defaultProps = {
-  name: "Guest User", // adopted when name prop is omitted
-}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

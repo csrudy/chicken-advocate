@@ -3,13 +3,23 @@ import { action } from 'typesafe-actions';
 
 export enum actionTypes {
   TO_DO = "TO_DO",
-  DELETE_TO_DO = "DELETE_TO_DO"
+  DELETE_TO_DO = "DELETE_TO_DO",
+  UPDATE_SEARCH = "UPDATE_SEARCH"
 }
 
 export const actions = {
     addToDo: (input: any) => action(actionTypes.TO_DO,  {input}),  
-    deleteToDo: (input: any) => action(actionTypes.DELETE_TO_DO,  {input})
-};
+    deleteToDo: (input: any) => action(actionTypes.DELETE_TO_DO,  {input}),
+    updateSearchBar: (input: any) => action(actionTypes.UPDATE_SEARCH, {input})
+  };
+
+
+
+
+
+
+
+
 
 // type Person1 = {
 //   name: string
