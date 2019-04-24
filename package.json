@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "build:server": "cd server && tsc",
+    "run:server": "cd server/build/web && node server.js"
   },
   "author": "",
   "license": "ISC",

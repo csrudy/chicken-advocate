@@ -1,8 +1,7 @@
+import { config } from "dotenv";
+import { resolve } from "path";
 
-import {config} from 'dotenv';
-import {resolve} from 'path';
-
-config({path: resolve(__dirname, '../../.env')});
+config({ path: resolve(__dirname, "../../../.env") });
 
 interface DbConfig {
   user: string;
@@ -10,15 +9,20 @@ interface DbConfig {
   password: string;
   database: string;
   port: string;
-  max?: number
+  max?: number;
 }
-console.log(process.env)
+
 const dbconfig: DbConfig = {
   user: process.env.db_user,
   host: process.env.db_host,
   password: process.env.db_password,
   database: process.env.db_database,
   port: process.env.db_port,
+  max: 1
+};
+
+if (Object.values(dbconfig).some(val => !val)) {
+  throw Error("Missing information dbConfig, please check .env file");
 }
 
 export default dbconfig;

@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es6",
+    "allowJs": true,
+    "outDir": "./build"
+  }
+}
