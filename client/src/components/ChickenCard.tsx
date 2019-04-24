@@ -3,14 +3,20 @@ import DataVis from './DataVis';
 
 // individual card with store info
 
-const ChickenCard = (props) => {
-  let restaurantInfo = [];
-  this.props.chickenList.forEach(element => {
-    restaurantInfo.push(<div id={element._id} key={element._id}>{element.name}</div>)   
-  });
+const ChickenCard = ({name, address1, address2, price, image, zip_code, rating}) => {
   return (
     <React.Fragment>
-      {restaurantInfo}
+      <div className='card'>
+        <div>
+          <img className='card-image' alt='card' src={image} />
+        </div>
+        <div className='card-details'>
+          <h3>{name}</h3>
+          <p>{address1}, {address2}, {zip_code}</p><br />
+          <p>{price}</p><br />
+          <p>{rating}</p><br />
+        </div>
+      </div>
       <DataVis />
     </React.Fragment>
   )

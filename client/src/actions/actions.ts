@@ -13,18 +13,20 @@ export const actions = {
     addToDo: (input: any) => action(actionTypes.TO_DO,  {input}),  
     deleteToDo: (input: any) => action(actionTypes.DELETE_TO_DO,  {input}),
     updateSearchBar: (input: any) => action(actionTypes.UPDATE_SEARCH, {input}),
-    chooseRadio: (input: any) => action(actionTypes.CHOOSE_RADIO, {input})
+    chooseRadio: (input: any) => action(actionTypes.CHOOSE_RADIO, {input}),
+    
     // TS-ify
-    // getAllChickenData: () => dispatch => {
-    // return fetch('/api/restaurants')
-    //   .then(res => res.json())
-    //   .then(jsonData =>
-    //     dispatch({
-    //       type: actionTypes.CHICKEN_DATA,
-    //       payload: jsonData,
-    //     })
-    //   )
-  };
+    getAllChickenData: () => dispatch => {
+    return fetch('/topten')
+      .then(res => res.json())
+      .then(jsonData =>
+        dispatch({
+          type: actionTypes.CHICKEN_DATA,
+          payload: jsonData,
+        })
+      )
+  }
+};
 
 
 

@@ -1,14 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { actions } from "../actions/actions";
-import { MainModel } from "../reducers/model";
 import * as Types from "MyTypes";
-import CardBox from "./CardBox";
 import SearchBar from "../components/SearchBar";
 import Filter from "../components/Filter";
+import { actions } from "../actions/actions";
+import { MainModel } from "../reducers/model";
 
-// import model, styles, and children
+// import styles and children
 import Header from "../components/Header";
 import CardDisplay from "./CardDisplay";
 
@@ -43,7 +42,4 @@ const App: React.FunctionComponent<AppProps> = props => {
   );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
