@@ -24,25 +24,17 @@ module.exports = {
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-<<<<<<< HEAD
-      { test: /\.tsx?$/,
-      use: [{
-        loader: "ts-loader",
-        options: {
-          transpileOnly: true
-        }
-      }]
-    },
-=======
-      { test: /\.tsx?$/, 
-        use: [{
-          loader: "ts-loader",
-          options: {
-            transpileOnly: true,
-          },
-        }],
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true
+            }
+          }
+        ]
       },
->>>>>>> 66799748638ae312e93631656d668706891cde70
 
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
