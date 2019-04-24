@@ -24,8 +24,8 @@ const SearchBar: React.FunctionComponent<SearchProps> = (props) => {
       <input type="radio" name="radio" value="zip"
        onChange={(e) => props.handleRadio(e.target.value)} defaultChecked/> by zip <br/>
       <input type="radio" name="radio" value="shop" 
-      onChange={(e) => props.handleRadio(e.target.value)} /> by chicken shop <br/> 
-      
+       onChange={(e) => props.handleRadio(e.target.value)} /> by chicken shop <br/> 
+
     </form>
     </div>
   )
