@@ -15,24 +15,29 @@ export const readController = {
     dbReader
       .Get(filter)
       .then(dbres => {
-        // console.log(res.rows);
+        console.log(dbres.rows);
         const restaurantId: string[] = [];
         dbres.rows.forEach(restaurant => {
           restaurantId.push(restaurant._id);
         });
+        res.send(dbres.rows);
         // helper(restaurantId);
       })
-      .catch(err => console.error("[ERROR] DB retrieval failed:", err));
+      .catch(err => {
+        console.error("[ERROR] DB retrieval failed:", err);
+        res.sendStatus(400);
+      });
   },
+
   getTopTen: (req: Request, res: Response, next: NextFunction) => {
     dbReader
       .GetTopTen()
       .then(dbres => {
-        console.log(dbres);
         res.send(dbres.rows);
       })
       .catch(err => {
         console.error("[ERROR] DB retrieval failed:", err);
+        res.sendStatus(400);
       });
   }
 };

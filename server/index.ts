@@ -1,3 +1,4 @@
+/*
 import * as data from "../data.json";
 import pool from "./db/dbconnect";
 import { resolve } from "dns";
@@ -45,3 +46,4 @@ pool
   .then(results => results.json())
   .then(data => console.log(data))
   .catch(err => console.log(err));
+*/

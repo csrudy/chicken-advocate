@@ -60,8 +60,15 @@ export const dbReader: IDbReader<QueryResult> = {
   },
   GetTopTen: () => {
     return new Promise((resolve, reject) => {
-      const queryString =
-        "SELECT name, AVG(spice) as avg_spice, AVG(crunch) as avg_spice, AVG(flavor) as avg_flavor, AVG(temp) as avg_temp, AVG(size) as avg_size, (AVG(crunch) + AVG(spice) + avg(flavor) +  avg(temp) + avg(size))/5.0 as overall_avg FROM ratings INNER JOIN restaurants ON restaurants._id=ratings.restaurant_id group by name order by overall_avg desc LIMIT 10;";
+      const queryString = `
+      SELECT name, price, address1, address2, city, zip_code, image_url, AVG(spice) as avg_spice, AVG(crunch) as avg_spice, AVG(flavor) as avg_flavor, AVG(temp) as avg_temp, AVG(size) as avg_size, (AVG(crunch) + AVG(spice) + avg(flavor) +  avg(temp) + avg(size))/5.0 as overall_avg  
+      FROM ratings
+      INNER JOIN restaurants
+      ON restaurants._id=ratings.restaurant_id              
+      GROUP BY name, price, address1, address2, city, zip_code, image_url
+      ORDER BY overall_avg desc
+      LIMIT 10;
+      `;
       Pool.query(queryString)
         .then(res => {
           resolve(res);
