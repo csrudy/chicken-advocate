@@ -1,14 +1,30 @@
 import { action } from 'typesafe-actions';
-// import models if needed
+// import models
 
 export enum actionTypes {
   TO_DO = "TO_DO",
-  DELETE_TO_DO = "DELETE_TO_DO"
+  CHICKEN_DATA = "CHICKEN_DATA"
 }
 
 export const actions = {
-    addToDo: (input: any) => action(actionTypes.TO_DO,  {input}),  
-    deleteToDo: (input: any) => action(actionTypes.DELETE_TO_DO,  {input})
+  //example TS action
+  addToDo: (input: any) => action(actionTypes.TO_DO, { input }),
+
+  // TS-ify
+  getAllChickenData: () => dispatch => {
+    return fetch('/api/restaurants')
+      .then(res => res.json())
+      .then(jsonData =>
+        dispatch({
+          type: actionTypes.CHICKEN_DATA,
+          payload: jsonData,
+        })
+      )
+  }
+
+  // updateSearch
+  // filter
+
 };
 
 // type Person1 = {
