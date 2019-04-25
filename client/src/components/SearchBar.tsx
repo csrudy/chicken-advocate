@@ -9,7 +9,7 @@ interface SearchProps {
 const SearchBar: React.FunctionComponent<SearchProps> = (props) => {
 
   return (
-    <div>
+    <div id="search">
       <form>
         <input type="text"
           name="search"
@@ -22,7 +22,7 @@ const SearchBar: React.FunctionComponent<SearchProps> = (props) => {
     <form>
       
       <input type="radio" name="radio" value="zip"
-       onChange={(e) => props.handleRadio(e.target.value)} defaultChecked/> by zip <br/>
+       onChange={(e) => props.handleRadio(e.target.value)} defaultChecked/> by zip code <br/>
       <input type="radio" name="radio" value="shop" 
        onChange={(e) => props.handleRadio(e.target.value)} /> by chicken shop <br/> 
 

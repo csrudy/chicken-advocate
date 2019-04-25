@@ -5,19 +5,12 @@ import { MainModel } from "./model";
 
 const initialState: MainModel = {
   chickenList: [],
-  location: "",
   searchBarString: "cell",
   radio: "zip"
 };
 
 export const mainReducer = (state: MainModel = initialState, action: Types.RootAction) => {
   switch (action.type) {
-    case actionTypes.CHICKEN_DATA: {
-      return {
-        ...state,
-        chickenList: action.payload
-      };
-    }
     case actionTypes.UPDATE_SEARCH: {
       return {
         ...state,
@@ -29,6 +22,13 @@ export const mainReducer = (state: MainModel = initialState, action: Types.RootA
       return {
         ...state,
         radio: action.payload
+      };
+    }
+
+    case actionTypes.CHICKEN_DATA: {
+      return {
+        ...state,
+        chickenList: action.payload
       };
     }
 

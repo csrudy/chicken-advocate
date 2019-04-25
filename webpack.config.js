@@ -6,7 +6,10 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, "./client/src/static/"),
     publicPath: "/build/",
-    hot: true
+    hot: true,
+    proxy: {
+      '/topten': 'http://localhost:3000'
+    }
   },
   output: {
     filename: "bundle.js",
