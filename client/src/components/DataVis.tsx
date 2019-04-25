@@ -12,34 +12,34 @@ import { RadialChart } from 'react-vis';
 
 const DataVis = ({avg_spice, avg_crunch, avg_flavor, avg_temp, avg_size}) => {
   const [hoverState, setHoverState] = useState(false);
-
+  const names = ['', 'Flavor', 'Spiciness', 'Crunchiness', 'Temperature', 'Size'];
   const DATA = [
     {
-      label: 'Flavor',
-      angle: 1,
+      // 'Flavor'
+      angle: 10,
       id: 1,
       radius: parseFloat(avg_flavor),
     },
     {
-      label: 'Spiciness',
-      angle: 2,
+      // 'Spiciness'
+      angle: 6,
       id: 2,
       radius: parseFloat(avg_spice),
     },
     {
-      label: 'Crunchiness',
-      angle: 5,
+      // 'Crunchiness'
+      angle: 8,
       id: 3,
       radius: parseFloat(avg_crunch),
     },
     {
-      label: 'Temperature',
-      angle: 3,
+      // 'Temperature'
+      angle: 5,
       id: 4,
       radius: parseFloat(avg_temp),
     },
     {
-      label: 'Size',
+      // 'Size'
       angle: 5,
       id: 5,
       radius: parseFloat(avg_size),
@@ -48,11 +48,11 @@ const DataVis = ({avg_spice, avg_crunch, avg_flavor, avg_temp, avg_size}) => {
   
   function mapData(hoveredSection) {
     return DATA.map((row, index) => {
-      console.log(row);
       return {
         ...row,
         innerRadius: hoveredSection === index + 1 ? row.radius - 1 : null,
         opacity: !hoveredSection || hoveredSection === index + 1 ? 1 : 0.6,
+        label: hoveredSection === index + 1 ? `${names[row.id]} ${row.radius.toFixed(1)}` : '',
       };
     });
   }
@@ -64,7 +64,7 @@ const DataVis = ({avg_spice, avg_crunch, avg_flavor, avg_temp, avg_size}) => {
         radiusDomain={[0, 20]}
         data={mapData(hoverState)}
         labelsAboveChildren
-        labelsRadiusMultiplier={1.4}
+        labelsRadiusMultiplier={1}
         onValueMouseOver={row => setHoverState(row.id)}
         onMouseLeave={() => setHoverState(false)}
         width={175}

@@ -15,8 +15,8 @@ interface AppProps {
   searchBarString: any;
   radio: any;
   chooseRadio: any;
-  chickenList: any;
-  getAllChickenData: any;
+  chickenList: [any];
+  getAllChickenData: () => [any];
 }
 
 const mapStateToProps = (store: Types.ReducerState) => {

@@ -14,8 +14,8 @@ const ChickenCard = ({name, address1, address2, price, image_url, zip_code, city
           <p>{address1}, {(address2) ? address2 + ',' : ''} {city} {zip_code}</p>
           {(price) ? <p>Price: {price}</p> : ''}
           <p>Overall Rating: {parseFloat(overall_avg).toFixed(1)}</p>
-          <DataVis {...{avg_spice, avg_crunch, avg_flavor, avg_temp, avg_size}}/>
         </div>
+          <DataVis {...{avg_spice, avg_crunch, avg_flavor, avg_temp, avg_size}}/>
       </div>
   )
 }

@@ -19,7 +19,7 @@
 }
 
 #logo {
-  width: 100px;
+  width: 150px;
 }
 
 #card-container {
@@ -49,4 +49,5 @@
 
 .card-details {
   margin: 10px;
+  width: 100%;
 }
