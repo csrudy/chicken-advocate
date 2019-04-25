@@ -4,3 +4,5 @@ node_modules
 .gitignore
 package-lock.json
 .env
+/client/src/static/bundle.js
+/client/src/static/bundle.js.map
