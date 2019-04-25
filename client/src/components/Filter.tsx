@@ -4,7 +4,7 @@ import Button from './Button';
 const Filter = (props) => { 
 
   return (
-    <div>
+    <div id="filter">
       <Button />
       <Button />
       <Button />

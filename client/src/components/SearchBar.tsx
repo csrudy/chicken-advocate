@@ -9,7 +9,7 @@ interface SearchProps {
 const SearchBar: React.FunctionComponent<SearchProps> = (props) => {
 
   return (
-    <div>
+    <div id="search">
       <form>
         <input type="text"
           name="search"

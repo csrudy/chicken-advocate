@@ -1,74 +1,77 @@
-import * as React from "react";
-import { useState } from "react";
-import { CircularGridLines, RadialChart } from 'react-vis';
+// import * as React from "react";
+// import { useState } from "react";
+// import { CircularGridLines, RadialChart } from 'react-vis';
 
 // visualises user input (flavor, spiciness, etc) using a react-vis radial 
 // http://uber.github.io/react-vis/examples/showcases/radial
 // https://github.com/uber/react-vis/tree/master/showcase/radial-chart
 
-// crunch, spice, flavor, temp, size, overall
-// display as a radial chart
+import * as React from 'react';
+import { useState } from "react";
+import { RadialChart } from 'react-vis';
 
-const DataVis = (props) => {
+const DataVis = ({avg_spice, avg_crunch, avg_flavor, avg_temp, avg_size}) => {
   const [hoverState, setHoverState] = useState(false);
+
   const DATA = [
     {
+      label: 'Flavor',
       angle: 1,
       id: 1,
-      radius: 10
+      radius: parseFloat(avg_flavor),
     },
     {
+      label: 'Spiciness',
       angle: 2,
-      label: 'Super Custom label',
-      subLabel: 'With annotation',
       id: 2,
-      radius: 20
+      radius: parseFloat(avg_spice),
     },
     {
+      label: 'Crunchiness',
       angle: 5,
       id: 3,
-      radius: 5,
-      label: 'Alt Label'
+      radius: parseFloat(avg_crunch),
     },
     {
+      label: 'Temperature',
       angle: 3,
       id: 4,
-      radius: 14
+      radius: parseFloat(avg_temp),
     },
     {
+      label: 'Size',
       angle: 5,
       id: 5,
-      radius: 12,
-      subLabel: 'Sub Label only'
+      radius: parseFloat(avg_size),
     }
   ];
   
-  function mapData(hoverState) {
+  function mapData(hoveredSection) {
     return DATA.map((row, index) => {
+      console.log(row);
       return {
         ...row,
-        innerRadius: hoverState === index + 1 ? row.radius - 1 : null,
-        opacity: !hoverState || hoverState === index + 1 ? 1 : 0.6
+        innerRadius: hoveredSection === index + 1 ? row.radius - 1 : null,
+        opacity: !hoveredSection || hoveredSection === index + 1 ? 1 : 0.6,
       };
     });
-  }  
+  }
 
-  return (
-    <div className="radial-wrapper" onMouseOver={(data) => setHoverState(!hoverState)}>
+    return (
       <RadialChart
         animation
         showLabels
         radiusDomain={[0, 20]}
         data={mapData(hoverState)}
         labelsAboveChildren
+        labelsRadiusMultiplier={1.4}
         onValueMouseOver={row => setHoverState(row.id)}
         onMouseLeave={() => setHoverState(false)}
-        width={600}
-        height={300}>
-        <CircularGridLines tickTotal={20} rRange={[0, 150]} />
+        width={175}
+        height={175}
+      >
       </RadialChart>
-    </div>
-  )
-};
+    );
+}
 
 export default DataVis;

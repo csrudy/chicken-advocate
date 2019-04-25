@@ -1,19 +1,14 @@
-import {config} from 'dotenv';
-import {resolve} from 'path';
+import { config } from "dotenv";
+import { resolve } from "path";
+import { ClientOpts } from "redis";
 
-config({path: resolve(__dirname, '../../.env')});
+config({ path: resolve(__dirname, "../../.env") });
 
-interface RedisConfig {
-  host: string;
-  password: string;
-  port: string;
-  max?: number
-}
-console.log(process.env)
-const redisConfig: RedisConfig = {
+console.log(process.env);
+const redisConfig: ClientOpts = {
   host: process.env.redis_host,
   password: process.env.db_password,
-  port: process.env.redis_port,
-}
+  port: parseInt(process.env.redis_port)
+};
 
 export default redisConfig;

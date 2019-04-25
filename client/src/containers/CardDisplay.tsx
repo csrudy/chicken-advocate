@@ -9,7 +9,10 @@ import { actions } from "../actions/actions";
 
 import ChickenCard from '../components/ChickenCard'
 
-interface AppProps {};
+interface AppProps {
+  chickenList: any;
+  getAllChickenData: any;
+};
 
 const mapStateToProps = (store: Types.ReducerState) => {
   return {
@@ -20,10 +23,11 @@ const mapStateToProps = (store: Types.ReducerState) => {
 //@ts-ignore
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) => bindActionCreators(actions, dispatch);
 
-const CardDisplay = (props) => {
-  const restaurantArray = props.chickenList.map(el => {
-    return <ChickenCard key={el._id} {...el}/>
+const CardDisplay: React.FunctionComponent<AppProps> = props => {
+  const restaurantArray = props.chickenList.map((el, idx) => {
+    return <ChickenCard key={idx} {...el}/>
   })
+  console.log(restaurantArray)
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -34,9 +38,9 @@ const CardDisplay = (props) => {
   })
 
   return (
-    <React.Fragment>
+    <div id='card-container'>
       {restaurantArray}
-    </React.Fragment>
+    </div>
   )
 }
 
