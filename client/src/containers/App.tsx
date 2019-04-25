@@ -2,20 +2,22 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import * as Types from "MyTypes";
-import SearchBar from "../components/SearchBar";
-import Filter from "../components/Filter";
 import { actions } from "../actions/actions";
 import { MainModel } from "../reducers/model";
-import Header from "../components/Header";
+
 import CardDisplay from "./CardDisplay";
+import Filter from "../components/Filter";
+
+// children
+import Header from "../components/Header";
+import SearchBar from "../components/SearchBar";
 
 interface AppProps {
-  name?: string;
-  updateSearchBar: any;
   searchBarString: any;
   radio: any;
-  chooseRadio: any;
   chickenList: [any];
+  updateSearchBar: any;
+  chooseRadio: any;
   getAllChickenData: () => [any];
 }
 
@@ -38,6 +40,8 @@ const App: React.FunctionComponent<AppProps> = props => {
       //@ts-ignore */}
       <Header />
       <SearchBar handleChange={props.updateSearchBar} handleRadio={props.chooseRadio} />
+      {/*
+      //@ts-ignore */}
       <Filter />
       {/*
       //@ts-ignore */}
@@ -46,4 +50,6 @@ const App: React.FunctionComponent<AppProps> = props => {
   );
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// when you click on one of the filter buttons, we rearrange chickenlist and filter according to a specific metric, then rerender

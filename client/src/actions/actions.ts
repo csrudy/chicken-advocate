@@ -4,12 +4,14 @@ import { action } from 'typesafe-actions';
 export enum actionTypes {
   UPDATE_SEARCH = "UPDATE_SEARCH",
   CHOOSE_RADIO = "CHOOSE_RADIO",
-  CHICKEN_DATA="CHICKEN_DATA"
+  CHICKEN_DATA = "CHICKEN_DATA",
+  CHOOSE_FILTER = "CHOOSE_FILTER"
 }
 
 export const actions = {
     updateSearchBar: (input: any) => action(actionTypes.UPDATE_SEARCH, {input}),
     chooseRadio: (input: any) => action(actionTypes.CHOOSE_RADIO, {input}),
+    chooseFilter: (input: string) => action(actionTypes.CHOOSE_FILTER, {input}),
     
     // TS-ify
     getAllChickenData: () => dispatch => {
