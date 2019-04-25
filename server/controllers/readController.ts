@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { ISearchFilter } from "./dbController";
 import { dbReader } from "./";
 import pool from "../db/dbconnect";
+import * as async from "async";
 
 export const readController = {
   getData: (req: Request, res: Response, next: NextFunction) => {
@@ -38,6 +39,63 @@ export const readController = {
       .catch(err => {
         console.error("[ERROR] DB retrieval failed:", err);
         res.sendStatus(400);
+      });
+  },
+
+  getInitialData: (req: Request, res: Response, next: NextFunction) => {
+    res.locals.dbReturned = {};
+    const promiseArr = res.locals.readThrough.map(tbName => {
+      return new Promise((resolve, reject) => {
+        switch (tbName) {
+          case "zipcode": {
+            dbReader
+              .GetZipCodes()
+              .then(reply => {
+                res.locals.dbReturned["zipcode"] = reply;
+                resolve();
+              })
+              .catch(err => {
+                console.error(err);
+                resolve();
+              });
+            break;
+          }
+          case "topten": {
+            dbReader
+              .GetTopTen()
+              .then(reply => {
+                res.locals.dbReturned["topten"] = reply.rows;
+                resolve();
+              })
+              .catch(err => {
+                console.log(err);
+                resolve();
+              });
+            break;
+          }
+          case "restaurant_names": {
+            dbReader
+              .GetRestaurantNames()
+              .then(reply => {
+                res.locals.dbReturned["restaurant_name"] = reply;
+                resolve();
+              })
+              .catch(err => {
+                console.log(err);
+                resolve();
+              });
+            break;
+          }
+        }
+      });
+    });
+    Promise.all(promiseArr)
+      .then(success => {
+        console.log(res.locals.dbReturned);
+        next();
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 };
