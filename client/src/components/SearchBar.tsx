@@ -10,20 +10,20 @@ interface SearchProps {
 const SearchBar: React.FunctionComponent<SearchProps> = (props) => {
 
   return (
-    <div id="search">
+    <div className="search">
       <form className="searchBar">
         <input type="text"
           name="search"
           placeholder="find fried chicken"
           onChange={(e) => props.handleChange(e.target.value)} />
-        <button>Click me</button>
+        <button>Search</button>
       </form>
-      <form className="searchParams">
+      {/* <form className="searchParams">
         <input type="radio" name="radio" value="zip"
           onChange={(e) => props.handleRadio(e.target.value)} defaultChecked /> by zip code <br />
         <input type="radio" name="radio" value="shop"
           onChange={(e) => props.handleRadio(e.target.value)} /> by chicken shop <br />
-      </form>
+      </form> */}
     </div>
   )
 }

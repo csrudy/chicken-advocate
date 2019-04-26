@@ -2,46 +2,50 @@ body {
   box-sizing: border-box;
 }
 
-#header {
-  background-color: #0c88fc;
-  font-family: Palatino, serif;
+.header {
   position: sticky;
+  box-shadow: inset 0 -.7em 0 -.35em rgba(0,0,0,0.17);
   top: 0;
-  box-shadow:inset 0 -.7em 0 -.35em rgba(0,0,0,0.17);
-  /* position: absolute; */
-  /* z-index: 2;
-  /* top: 0;
   left: 0;
   width: 100%;
-  height: 310px;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 66%,rgba(33,84,95,0.3) 66%,rgba(33,84,95,0) 100%) */
+  height: 150px;
+  margin-bottom: 20px;
+  background-color: #e0c2ac;
 }
 
-#header a {
+.header a {
   font-size: 20px;
   font-weight: 600;
   color: white;
 }
 
-#search {
-    margin: 20px auto 10px;
-    height: 200px;
-    width: 80%;
-    /* border: 1px solid black; */
+.header h1 {
+  font-family: Palatino, serif;
+  color: rgb(39, 37, 37);
+  padding: 5px;
+}
+
+.search {
+    height: 100px;
     border-radius: 5px;
-    padding: 40px;
     text-align: center;
     font-family: Palatino, serif;
-    background-color: #39b4e5;
-    box-shadow:inset 0 -0.9em 0 -0.6em rgba(0,0,0,0.17);
+    background-color:#703e5262;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    margin: 0 auto;
+    font-family: Palatino, serif;
+    padding: 2em 1em 1em 1em;
 }
 
 .searchBar input {
   text-align: center;
-  width: 600px;
-  padding: 10px 20px;
-  font-size: 60px;
-  border-radius: 10px;
+  font-family: Palatino, serif;
+  width: 400px;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 5px;
 }
 
 .searchParams {
@@ -51,46 +55,44 @@ body {
   justify-content: space-between;
 }
 
-#search button {
+.search button {
   color: white;
-  background-color: #ff3232;
-  font-size: 25px;
-  font-weight: 800;
-  height: 92px;
-  width: 150px;
-  vertical-align: top;
-  border: 3px solid black;
-  border-radius: 10px;
-  margin-left: 20px;
-  box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  background-color: #703e52;
 }
 
-#search button:hover {
+.search button:hover {
   cursor: pointer;
-  background-color: #cc0000;
+  color: black;
+  background-color: #703e52;
 }
 
-#filter {
-  margin: auto;
+.filter {
   width: 500px;
-  /* border: 1px solid black; */
   border-radius: 5px;
   padding: 20px;
   text-align: center;
-  margin-bottom: 10px;
+  margin: 10px auto 5px auto;
   font-family: Palatino, serif;
+}
+
+.filter h1 {
+  font-family: Palatino, serif;
+  color: #703e52;
+  font-size: 20px;
 }
 
 #logo {
   width: 100px;
+  padding: 5px 0 0 5px;
 }
 
-#card-container {
+.card-container {
   display: flex;
   width: 80%;
   flex-direction: column;
   margin: auto;
   font-family: Palatino, serif;
+  padding: 1em 5%;
 }
 
 .card {
@@ -118,4 +120,23 @@ body {
 .card-details {
   margin: 10px;
   width: 100%;
+}
+
+button {
+  font-family: Palatino, serif;
+  color: #703e52;
+  font-size: 15px;
+  padding: 0.5rem;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #E7D8C9;  
+}
+
+button:hover {
+  color: black;
+  background-color: #E7D8C9;
+  color: #703e52;
+  border-radius: 0.5rem;
+  border-color: #E7D8C9;
 }

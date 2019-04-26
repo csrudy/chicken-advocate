@@ -10,9 +10,9 @@ import ChickenCard from '../components/ChickenCard'
 
 // this container displays all the individual chicken cards
 
-interface AppProps {
+interface CardDisplayProps {
   chickenList: any;
-  filterBy: any;
+  filterBy: string;
   getAllChickenData: any;
 };
 
@@ -26,12 +26,13 @@ const mapStateToProps = (store: Types.ReducerState) => {
 //@ts-ignore
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) => bindActionCreators(actions, dispatch);
 
-const CardDisplay: React.FunctionComponent<AppProps> = props => {
+const CardDisplay: React.FunctionComponent<CardDisplayProps> = props => {
 
+  // if filterBy is null (ie when the page loads) don't sort chickenList
+  // if a button is clicked, sort chickenList by that metric and then filterBy will update store
   const sortedArray = !props.filterBy ? props.chickenList : props.chickenList.sort((a, b) => {
     switch(props.filterBy) {
       case "Flavor":
-        console.log(a.avg_flavor)
         return a.avg_flavor - b.avg_flavor;
       case "Spice":
         return a.avg_spice - b.avg_spice;
@@ -55,13 +56,14 @@ const CardDisplay: React.FunctionComponent<AppProps> = props => {
       props.getAllChickenData();
       setCount(count + 1);
     }
+    // fetch("/initialize").then(res => res.json()).then(console.log)
   })
 
   return (
-    <div id='card-container'>
+    <div className="card-container">
       {restaurantArray}
     </div>
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardDisplay);
+export default connect<{},CardDisplayProps,{}>(mapStateToProps, mapDispatchToProps)(CardDisplay);

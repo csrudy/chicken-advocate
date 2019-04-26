@@ -1,5 +1,4 @@
 import { action } from 'typesafe-actions';
-// import models
 
 export enum actionTypes {
   UPDATE_SEARCH = "UPDATE_SEARCH",
@@ -10,10 +9,11 @@ export enum actionTypes {
 
 export const actions = {
     updateSearchBar: (input: any) => action(actionTypes.UPDATE_SEARCH, {input}),
-    chooseRadio: (input: any) => action(actionTypes.CHOOSE_RADIO, {input}),
-    chooseFilter: (input: string) => action(actionTypes.CHOOSE_FILTER, {input}),
     
-    // TS-ify
+    chooseRadio: (input: any) => action(actionTypes.CHOOSE_RADIO, {input}),
+    
+    chooseFilter: (input: string) => action(actionTypes.CHOOSE_FILTER, {input}),
+
     getAllChickenData: () => dispatch => {
     return fetch('/topten')
       .then(res => res.json())

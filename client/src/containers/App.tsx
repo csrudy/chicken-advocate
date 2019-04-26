@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import * as Types from "MyTypes";
 import { actions } from "../actions/actions";
-import { MainModel } from "../reducers/model";
 
+// containers to render
 import CardDisplay from "./CardDisplay";
-import Filter from "../components/Filter";
+import Filter from "./Filter";
 
-// children
+// children components 
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 
@@ -29,27 +29,19 @@ const mapStateToProps = (store: Types.ReducerState) => {
   };
 };
 
-//@ts-ignore
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
+//@ts-ignore
   bindActionCreators(actions, dispatch);
 
 const App: React.FunctionComponent<AppProps> = props => {
   return (
     <React.Fragment>
-      {/*
-      //@ts-ignore */}
       <Header />
       <SearchBar handleChange={props.updateSearchBar} handleRadio={props.chooseRadio} />
-      {/*
-      //@ts-ignore */}
       <Filter />
-      {/*
-      //@ts-ignore */}
       <CardDisplay />
     </React.Fragment>
   );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// when you click on one of the filter buttons, we rearrange chickenlist and filter according to a specific metric, then rerender

@@ -18,13 +18,13 @@ const mapStateToProps = (store: Types.ReducerState) => {
   }
 };
 
-//@ts-ignore
+// @ts-ignore
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) => bindActionCreators(actions, dispatch);
 
 const Filter: React.FunctionComponent<FilterProps> = props => { 
   return (
-    <div id="filter">
-      <h4>Order by...</h4>
+    <div className="filter">
+      <h1>Order by...</h1>
       <button onClick={(e) => {props.chooseFilter("Flavor")}}>Flavor</button>
       <button onClick={(e) => props.chooseFilter("Spice")}>Spice</button>
       <button onClick={(e) => props.chooseFilter("Crunch")}>Crunch</button>
@@ -34,4 +34,4 @@ const Filter: React.FunctionComponent<FilterProps> = props => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect<{},{},{}>(null, mapDispatchToProps)(Filter);

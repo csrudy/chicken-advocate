@@ -32,10 +32,12 @@ export const mainReducer = (state: MainModel = initialState, action: Types.RootA
         filterBy: action.payload.input
       }
     }
-
+    
+    //@ts-ignore
     case actionTypes.CHICKEN_DATA: {
       return {
         ...state,
+        //@ts-ignore
         chickenList: action.payload
       };
     }
