@@ -8,7 +8,8 @@ module.exports = {
     publicPath: "/build/",
     hot: true,
     proxy: {
-      '/topten': 'http://localhost:3000'
+      '/topten': 'http://localhost:3000',
+      '/initialize': 'http://localhost:3000'
     }
   },
   output: {

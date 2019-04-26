@@ -1,5 +1,6 @@
 export interface MainModel {
   chickenList: [];
   searchBarString: string,
-  radio: string
+  radio: string,
+  filterBy: string,
 }

@@ -1,12 +1,12 @@
 import { actionTypes } from "../actions/actions";
-// import model
 import * as Types from "MyTypes";
 import { MainModel } from "./model";
 
 const initialState: MainModel = {
   chickenList: [],
   searchBarString: "cell",
-  radio: "zip"
+  radio: "zip",
+  filterBy: null,
 };
 
 export const mainReducer = (state: MainModel = initialState, action: Types.RootAction) => {
@@ -25,9 +25,19 @@ export const mainReducer = (state: MainModel = initialState, action: Types.RootA
       };
     }
 
+    case actionTypes.CHOOSE_FILTER: {
+      console.log(action);
+      return {
+        ...state,
+        filterBy: action.payload.input
+      }
+    }
+    
+    //@ts-ignore
     case actionTypes.CHICKEN_DATA: {
       return {
         ...state,
+        //@ts-ignore
         chickenList: action.payload
       };
     }

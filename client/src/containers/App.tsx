@@ -2,20 +2,22 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import * as Types from "MyTypes";
-import SearchBar from "../components/SearchBar";
-import Filter from "../components/Filter";
 import { actions } from "../actions/actions";
-import { MainModel } from "../reducers/model";
-import Header from "../components/Header";
+
+// containers to render
 import CardDisplay from "./CardDisplay";
+import Filter from "./Filter";
+
+// children components 
+import Header from "../components/Header";
+import SearchBar from "../components/SearchBar";
 
 interface AppProps {
-  name?: string;
-  updateSearchBar: any;
   searchBarString: any;
   radio: any;
-  chooseRadio: any;
   chickenList: [any];
+  updateSearchBar: any;
+  chooseRadio: any;
   getAllChickenData: () => [any];
 }
 
@@ -27,23 +29,19 @@ const mapStateToProps = (store: Types.ReducerState) => {
   };
 };
 
-//@ts-ignore
 const mapDispatchToProps = (dispatch: Dispatch<Types.RootAction>) =>
+//@ts-ignore
   bindActionCreators(actions, dispatch);
 
 const App: React.FunctionComponent<AppProps> = props => {
   return (
     <React.Fragment>
-      {/*
-      //@ts-ignore */}
       <Header />
       <SearchBar handleChange={props.updateSearchBar} handleRadio={props.chooseRadio} />
       <Filter />
-      {/*
-      //@ts-ignore */}
       <CardDisplay />
     </React.Fragment>
   );
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

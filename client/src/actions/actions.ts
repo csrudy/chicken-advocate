@@ -1,17 +1,19 @@
 import { action } from 'typesafe-actions';
-// import models
 
 export enum actionTypes {
   UPDATE_SEARCH = "UPDATE_SEARCH",
   CHOOSE_RADIO = "CHOOSE_RADIO",
-  CHICKEN_DATA="CHICKEN_DATA"
+  CHICKEN_DATA = "CHICKEN_DATA",
+  CHOOSE_FILTER = "CHOOSE_FILTER"
 }
 
 export const actions = {
     updateSearchBar: (input: any) => action(actionTypes.UPDATE_SEARCH, {input}),
+    
     chooseRadio: (input: any) => action(actionTypes.CHOOSE_RADIO, {input}),
     
-    // TS-ify
+    chooseFilter: (input: string) => action(actionTypes.CHOOSE_FILTER, {input}),
+
     getAllChickenData: () => dispatch => {
     return fetch('/topten')
       .then(res => res.json())
